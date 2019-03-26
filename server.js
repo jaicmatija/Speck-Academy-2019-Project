@@ -46,3 +46,5 @@ const halls = [{
         reservedUntil: new Date(2019, 3, 25, 12),
     }
 }];
+
+const hallNames = halls.map(hall => hall.name);
