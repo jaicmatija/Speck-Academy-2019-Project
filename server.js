@@ -1,10 +1,5 @@
 const http = require('http');
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World!');
-}).listen(8080);
-
 const halls = [{
     id: 234,
     name: "Dvorana Gradske knjižnice",
@@ -49,3 +44,9 @@ const halls = [{
 
 const hallNames = halls.map(hall => hall.name);
 const hallNamesWithComma = hallNames.join(', ');
+
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf8' });
+    res.write(hallNamesWithComma);
+    res.end();
+}).listen(8080);
