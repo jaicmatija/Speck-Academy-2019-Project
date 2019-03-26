@@ -48,3 +48,4 @@ const halls = [{
 }];
 
 const hallNames = halls.map(hall => hall.name);
+const hallNamesWithComma = hallNames.join(', ');
