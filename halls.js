@@ -16,7 +16,7 @@ const halls = [{
     }
 }, {
     id: 534,
-    name: "Dvorana TIC (Turistički dom)",
+    name: "Dvorana Hrvatskog doma",
     reservation: {
         isReserved: false,
         reservedFrom: null,
