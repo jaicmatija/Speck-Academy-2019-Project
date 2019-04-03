@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/jaicmatija/Speck-Academy-2019-Project#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "luxon": "^1.12.0"
   }
