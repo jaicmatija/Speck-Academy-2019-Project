@@ -1,45 +1,78 @@
-const halls = [{
-    id: 234,
-    name: "Dvorana Gradske knjižnice",
-    reservation: {
-        isReserved: true,
-        reservedFrom: new Date(2019, 3, 25, 10),
-        reservedUntil: new Date(2019, 3, 25, 12),
+const halls = [];
+let nextId = 1;
+
+function add(name) {
+    const hall = {
+        id: nextId,
+        name: name,
+        reservation: {
+            isReserved: false,
+            reservedFrom: null,
+            reservedUntil: null
+        }
+    };
+
+    nextId += 1;
+    halls.push(hall);
+
+    return hall;
+}
+
+function getIndex(id) {
+    let index;
+    for (let i = 0; i < halls.length; i++) {
+        const hall = halls[i];
+        if (hall.id === id) {
+            index = i;
+            break;
+        }
     }
-}, {
-    id: 264,
-    name: "Konferencijske dvorane RCTP (Razvojni centar i tehnološki park)",
-    reservation: {
-        isReserved: false,
-        reservedFrom: null,
-        reservedUntil: null,
+    return index;
+}
+
+function remove(id) {
+    const index = getIndex(id);
+    if (index === undefined) {
+        return false;
     }
-}, {
-    id: 534,
-    name: "Dvorana Hrvatskog doma",
-    reservation: {
-        isReserved: false,
-        reservedFrom: null,
-        reservedUntil: null,
+
+    halls.splice(index, 1);
+    return true;
+}
+
+function update(id, isReserved, reservedFrom, reservedUntil) {
+    if (reservedFrom >= reservedUntil) {
+        alert('reservedFrom cant be after reserved until');
+        return false;
     }
-}, {
-    id: 123,
-    name: "Dvorana Hrvatskog doma",
-    reservation: {
-        isReserved: true,
-        reservedFrom: new Date(2019, 3, 23, 12),
-        reservedUntil: new Date(2019, 3, 23, 14),
+
+    const index = getIndex(id);
+    if (index === undefined) {
+        return false;
     }
-}, {
-    id: 425,
-    name: "Velika sportska dvorana",
-    reservation: {
-        isReserved: true,
-        reservedFrom: new Date(2019, 3, 25, 11),
-        reservedUntil: new Date(2019, 3, 25, 12),
-    }
-}];
+
+    const hall = halls[index];
+    hall.reservation.isReserved = isReserved;
+    hall.reservation.reservedFrom = isReserved ? reservedFrom : null;
+    hall.reservation.reservedUntil = isReserved ? reservedUntil : null;
+
+    return true;
+}
+
+function init() {
+    const dvoranaGradskeKnjizice = add('Dvorana Gradske knjižnice');
+    add('Konferencijske dvorane RCTP (Razvojni centar i tehnološki park)');
+    add('Dvorana Hrvatskog doma');
+    add('Dvorana TIC (Turistički dom)');
+    add('Velika sportska dvorana');
+
+    update(dvoranaGradskeKnjizice.id, true, new Date(2019, 3, 25, 10), new Date(2019, 3, 25, 12));
+}
 
 module.exports = {
-    halls
+    halls,
+    init,
+    add,
+    update,
+    remove
 };
