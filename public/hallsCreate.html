@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registracija</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a class="h1-link" href="index.html">Rezervacija dvorana</h1></a>
+    <nav>
+      <a class="nav-links" href="index.html">Home</a>
+      <a class="nav-links" href="hall.html">Dvorane</a>
+      <a class="nav-links" href="#">O nama</a>
+      <a class="nav-links" href="register.html">Registracija</a>
+
+    </nav>
+  </header>
+  <div class="subheader">
+    <ul class="flex-container">
+      <li><a href="http://localhost:3000/halls">Dvorane</a></li>
+      <li><a href="hallsCreate.html">Dodaj dvoranu</a></li>
+      <li><a href="hallsUpdate.html">Rezerviraj dvoranu</a></li>
+      <li><a href="hallsDelete.html">Ukloni dvoranu</a></li>
+    </ul>
+  </div>
+  <div class="form-div">
+    <form action="http://localhost:3000/hallsCreate" method="post">
+      <label for="hallName">Ime dvorane</label>
+      <input id="hallName" placeholder="Unesite ime dvorane " name="hallName" type="text" required>
+      <br>
+
+      <br>
+
+      <input class="button" type="submit" value="Dodajte dvoranu">
+    </form>
+  </div>
+
+  <footer>
+    <h4>Grad Križevci</h4>
+  </footer>
+
+</body>
+
+</html>
